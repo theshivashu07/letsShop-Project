@@ -1,9 +1,15 @@
 
 
 
-{% include "HEADER.html" %}
+{% extends "MASTER.html" %}
 
-{% block mycode %}
+
+{% block titlecontent %}
+Home
+{% endblock %}
+
+
+{% block childcontent %}
 
 
     <!-- ***** Main Banner Area Start ***** -->
@@ -118,9 +124,6 @@
 
 
 {% endblock %}
-
-{% include "FOOTER.html" %}
-
 
 
 

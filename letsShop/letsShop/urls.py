@@ -30,9 +30,9 @@ urlpatterns = [
     path('single-product/',views.singleproduct,name="single-product"),
 
     path('explore/',views.explore,name="explore"), 
-    path('overall-women-area/',views.overallwomenarea,name="overall-women-area"),
-    path('overall-men-area/',views.overallmenarea,name="overall-men-area"),
-    path('overall-kids-area/',views.overallkidsarea,name="overall-kids-area"),
+    path('women/',views.overallwomenarea,name="overall-women-area"),
+    path('men/',views.overallmenarea,name="overall-men-area"),
+    path('kids/',views.overallkidsarea,name="overall-kids-area"),
 
     # path('contact/',views.contact,name="contact"),
 ]
