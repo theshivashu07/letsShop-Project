@@ -47,9 +47,17 @@ And its password is also "vashu07".
 ########################
 
 
+7. then i'll try to reset the username's password,
+|.....> python manage.py changepassword vashu07
+So now, here's superuser's name is "vashu07",
+And its password is also "vashu12345".
+
+8. Now first i'm shifting my template's files to my projects saperate folders. 
 
 
-
+########################
+####### Commit : 3nd #########################################
+########################
 
 
 
