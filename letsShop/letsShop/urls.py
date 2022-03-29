@@ -15,7 +15,33 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from letsShop import views
 
 urlpatterns = [
+    # by default
     path('admin/', admin.site.urls),
+
+    # Initial URL's for Pages
+    path('',views.index,name=""),
+    path('index/',views.index,name="index"),
+    path('about-us/',views.aboutus,name="about-us"),
+    path('contact-us/',views.contactus,name="contact-us"),
+    path('products/',views.products,name="products"),
+    path('single-product/',views.singleproduct,name="single-product"),
+
+    path('explore/',views.explore,name="explore"), 
+    path('overall-women-area/',views.overallwomenarea,name="overall-women-area"),
+    path('overall-men-area/',views.overallmenarea,name="overall-men-area"),
+    path('overall-kids-area/',views.overallkidsarea,name="overall-kids-area"),
+
+    # path('contact/',views.contact,name="contact"),
 ]
+
+
+
+'''
+    # trial if you wants any value pass on url,
+    # so there is two ways, set its type, or everytype also.
+    path('products/<productsid>',views.productsDetails),
+    path('products/<int:productsid>',views.productsDetails),
+''' 
