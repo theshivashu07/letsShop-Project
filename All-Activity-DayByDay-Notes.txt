@@ -288,7 +288,8 @@ and in the last we do migrate to that table is created in sqlite database file. 
 
 
 
-18.3 - And after that we add all product's data one-by-one there. All Men's Are setttttt!
+18.3 - And Now i'm Adding all Men's, Women's and Kid's Data, And its all working perfectly. 
+And I'm also implementinmg class activeness logic. So okkay now I'm commiting again!
 
 
 

@@ -45,12 +45,12 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="{% url '' %}" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'overall-men-area' %}">Men's</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'overall-women-area' %}">Women's</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'overall-kids-area' %}">Kid's</a></li>
+                            <li class="scroll-to-section"><a href="{% url '' %}"  class="{% if request.path == '/' %} active {% endif %}">Home</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'overall-men-area' %}" class="{% if request.path == '/mens/' %} active {% endif %}">Men's</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'overall-women-area' %}" class="{% if request.path == '/womens/' %} active {% endif %}">Women's</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'overall-kids-area' %}" class="{% if request.path == '/kids/' %} active {% endif %}">Kid's</a></li>
                             <li class="submenu">
-                                <a href="javascript:;">Pages</a>
+                                <a href="javascript:;" class="{% if request.path == '/about-us/' or request.path == '/products/' or request.path == '/single-product/'  or request.path == '/contact-us/'  %} active {% endif %}">Pages</a>
                                 <ul>
                                     <li><a href="{% url 'about-us' %}">About Us</a></li>
                                     <li><a href="{% url 'products' %}">Products</a></li>
@@ -58,16 +58,7 @@
                                     <li><a href="{% url 'contact-us' %}">Contact Us</a></li>
                                 </ul>
                             </li>
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a rel="nofollow" href="{% url '' %}" target="_blank">Template Page 4</a></li>
-                                </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="{% url 'explore' %}">Explore</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'explore' %}"  class="{% if request.path == '/explore/' %} active {% endif %}">Explore</a></li>
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

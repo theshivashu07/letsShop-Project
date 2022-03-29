@@ -19,38 +19,39 @@ def singleproduct(request):
 
 def explore(request):
     return render(request,'explore.html'); 
+
 def overallwomenarea(request):
-    return render(request,'overall-women-area.html'); 
+    gettingData=getdataJustDual("Women's");   # to get data just dual 
+    data={'gettingData' : gettingData}
+    return render(request,'overall-women-area.html',data); 
+
 def overallmenarea(request):
-    data={}
-    gettingData=Product_Entries.objects.all();    # to get all data from database
-    gettingData=getdataJustDual(gettingData);   # to get data just dual 
+    gettingData=getdataJustDual("Men's");   # to get data just dual 
     data={'gettingData' : gettingData}
     return render(request,'overall-men-area.html',data); 
+
 def overallkidsarea(request):
-    return render(request,'overall-kids-area.html'); 
+    gettingData=getdataJustDual("Kid's");   # to get data just dual 
+    data={'gettingData' : gettingData}
+    return render(request,'overall-kids-area.html',data); 
 
 
 # One extra function, suppose we have data but we want to dual it
-def getdataJustDual(myData):
+# Actually we have only three products, but we want to show as 6, that why it needed,
+def getdataJustDual(bases):
+    myData=Product_Entries.objects.filter(product_from=bases);    # to get all data from database
     gettingData = []
     for data in myData:
         gettingData.append(data)
-        print(data.product_image)
     for data in myData:
         gettingData.append(data)
-        print(data.product_image)
     return gettingData;
 
 
 
 
-'''
-def aboutus(request):
-    return render(request,'newsdetails.html',data); 
-def course(request):
-    return render(request,'newsdetails.html',data); 
-'''
+
+
 
 # To check initially, how "HttpResponse" works.
 '''

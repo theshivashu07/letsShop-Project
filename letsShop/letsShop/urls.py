@@ -36,8 +36,8 @@ urlpatterns = [
     path('single-product/',views.singleproduct,name="single-product"),
 
     path('explore/',views.explore,name="explore"), 
-    path('women/',views.overallwomenarea,name="overall-women-area"),
-    path('men/',views.overallmenarea,name="overall-men-area"),
+    path('womens/',views.overallwomenarea,name="overall-women-area"),
+    path('mens/',views.overallmenarea,name="overall-men-area"),
     path('kids/',views.overallkidsarea,name="overall-kids-area"),
 
     # path('contact/',views.contact,name="contact"),
