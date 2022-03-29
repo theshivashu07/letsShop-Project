@@ -257,12 +257,13 @@ class Product_Entries(models.Model):
     product_update_date = models.DateTimeField(auto_now=True)
     # product_stars = models.CharField(max_length=1);    
 
-18.1 - And then we go on new app's admin.py file and do some code there, 
-from django.contrib import admin
-from addproducts.models import Product_Entries
-class saveProductEntries(admin.ModelAdmin):
-    list_display=('product_from', 'product_name', 'product_price', 'product_create_date', 'product_update_date','product_image');
-admin.site.register(Product_Entries,saveProductEntries);
+
+
+########################################################################
+####### Commit : 2nd ########################################################
+########################################################################
+
+
 
 18.2 - So after creates model, we do apply three steps, first we do makemigrations,
 so that there is created schema on migration file under app, and then we do migrate and then it is created as table.  
@@ -270,6 +271,13 @@ so that there is created schema on migration file under app, and then we do migr
 |.....> python manage.py migrate
 So you want to know to do three things, first is make model, then convert it into migrations by makemigration command, 
 and in the last we do migrate to that table is created in sqlite database file. And then we forward things ahead. 
+18.3 - And after that we add all product's data one-by-one there.
+
+
+
+########################################################################
+####### Commit : 3nd ########################################################
+########################################################################
 
 
 
