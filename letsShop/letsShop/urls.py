@@ -17,6 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from letsShop import views
 
+# these importing is must if we working with media related thing
+from django.conf import settings 
+from django.conf.urls.static import static 
+
+
+
 urlpatterns = [
     # by default
     path('admin/', admin.site.urls),
@@ -36,6 +42,18 @@ urlpatterns = [
 
     # path('contact/',views.contact,name="contact"),
 ]
+
+
+
+
+
+# this is also must if we working with media related things
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+
 
 
 
