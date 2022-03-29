@@ -257,6 +257,13 @@ class Product_Entries(models.Model):
     product_update_date = models.DateTimeField(auto_now=True)
     # product_stars = models.CharField(max_length=1);    
 
+18.1 - And then we go on new app's admin.py file and do some code there, 
+from django.contrib import admin
+from addproducts.models import Product_Entries
+class saveProductEntries(admin.ModelAdmin):
+    list_display=('product_from', 'product_name', 'product_price', 'product_create_date', 'product_update_date','product_image');
+admin.site.register(Product_Entries,saveProductEntries);
+
 
 
 ########################################################################
@@ -278,6 +285,20 @@ and in the last we do migrate to that table is created in sqlite database file. 
 ########################################################################
 ####### Commit : 3nd ########################################################
 ########################################################################
+
+
+
+18.3 - And after that we add all product's data one-by-one there. All Men's Are setttttt!
+
+
+
+########################################################################
+####### Commit : 4nd ########################################################
+########################################################################
+
+
+
+
 
 
 

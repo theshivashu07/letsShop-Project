@@ -1,12 +1,8 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
+from addproducts.models import Product_Entries
 
-# To check initially, how "HttpResponse" works.
-'''
-def index(request):
-        return HttpResponse("<b>Okay Google!</b>")
-'''
 
 
 # Initial Function's to Display Pages
@@ -26,9 +22,26 @@ def explore(request):
 def overallwomenarea(request):
     return render(request,'overall-women-area.html'); 
 def overallmenarea(request):
-    return render(request,'overall-men-area.html'); 
+    data={}
+    gettingData=Product_Entries.objects.all();    # to get all data from database
+    gettingData=getdataJustDual(gettingData);   # to get data just dual 
+    data={'gettingData' : gettingData}
+    return render(request,'overall-men-area.html',data); 
 def overallkidsarea(request):
     return render(request,'overall-kids-area.html'); 
+
+
+# One extra function, suppose we have data but we want to dual it
+def getdataJustDual(myData):
+    gettingData = []
+    for data in myData:
+        gettingData.append(data)
+        print(data.product_image)
+    for data in myData:
+        gettingData.append(data)
+        print(data.product_image)
+    return gettingData;
+
 
 
 
@@ -39,5 +52,10 @@ def course(request):
     return render(request,'newsdetails.html',data); 
 '''
 
+# To check initially, how "HttpResponse" works.
+'''
+def index(request):
+        return HttpResponse("<b>Okay Google!</b>")
+'''
 
 
