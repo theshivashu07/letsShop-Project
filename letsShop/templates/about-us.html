@@ -81,13 +81,13 @@ About Us
                             <div class="hover-effect">
                                 <div class="inner-content">
                                     <ul>
-                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                    </ul>
-                                </div>
+                                        <li><a href="{% if data.member_instagram_id != NULL %} {{data.member_instagram_id}} {% else %} # {% endif %}"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="{% if data.member_facebook_id != NULL %} {{data.member_facebook_id}} {% else %} # {% endif %}"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="{% if data.member_twitter_id != NULL %} {{data.member_twitter_id}} {% else %} # {% endif %}"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="{% if data.member_linkedin_id != NULL %} {{data.member_linkedin_id}} {% else %} # {% endif %}"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="{% if data.member_github_id != NULL %} {{data.member_github_id}} {% else %} # {% endif %}"><i class="fa fa-github"></i></a></li>
+                                    </ul> 
+                                </div> 
                             </div>
                             <img src="/media/{{data.member_image}}">
                         </div>

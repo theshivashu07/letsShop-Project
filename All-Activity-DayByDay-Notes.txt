@@ -318,11 +318,13 @@ And I'm also implementinmg class activeness logic. So okkay now I'm commiting ag
 
 19 - Now we manage "about-us" page's all Team Members related things, so for that we make models, 
 and including instagram, facebook, twitter, linkedin and github  linkings we do every steps there.
+But i'm doing two commits there, so that if in future you dont want this model, then we recommitting in future. 
 
 
 
 ########################################################################
 ####### Commit : 1nd(Before) ###################################################
+####### Commit : 2nd(After) ####################################################
 ########################################################################
 
 
