@@ -1,19 +1,25 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
-from addproducts.models import Product_Entries
+from addproducts.models import Product_Entries, OurAmazingTeam
 
 
 
 # Initial Function's to Display Pages
 def index(request):
     return render(request,'index.html'); 
+
 def aboutus(request):
-    return render(request,'about-us.html'); 
+    gettingData=OurAmazingTeam.objects.all();   # to get data just dual 
+    data={'gettingData' : gettingData}
+    return render(request,'about-us.html',data); 
+
 def contactus(request):
     return render(request,'contact.html'); 
+
 def products(request):
     return render(request,'products.html'); 
+
 def singleproduct(request):
     return render(request,'single-product.html'); 
 
@@ -46,7 +52,6 @@ def getdataJustDual(bases):
     for data in myData:
         gettingData.append(data)
     return gettingData;
-
 
 
 

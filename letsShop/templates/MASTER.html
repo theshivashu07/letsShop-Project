@@ -105,18 +105,18 @@
                 <div class="col-lg-3">
                     <h4>Shopping &amp; Categories</h4>
                     <ul>
-                        <li><a href="#">Men’s Shopping</a></li>
-                        <li><a href="#">Women’s Shopping</a></li>
-                        <li><a href="#">Kid's Shopping</a></li>
+                        <li><a href="{% url 'overall-men-area' %}">Men’s Shopping</a></li>
+                        <li><a href="{% url 'overall-women-area' %}">Women’s Shopping</a></li>
+                        <li><a href="{% url 'overall-kids-area' %}">Kid's Shopping</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
                     <h4>Useful Links</h4>
                     <ul>
-                        <li><a href="#">Homepage</a></li>
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="{% url '' %}">Homepage</a></li>
+                        <li><a href="{% url 'about-us' %}">About Us</a></li>
                         <li><a href="#">Help</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="{% url 'contact-us' %}">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
@@ -152,7 +152,7 @@
     <!-- Bootstrap -->
     <script src="/static/js/popper.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
-
+ 
     <!-- Plugins -->
     <script src="/static/js/owl-carousel.js"></script>
     <script src="/static/js/accordions.js"></script>
