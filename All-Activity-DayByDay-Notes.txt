@@ -331,6 +331,49 @@ But i'm doing two commits there, so that if in future you dont want this model, 
 
 
 
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 31-03-2022 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
+
+
+20 - I'm working on feature to show all stars and also manage add to cart button,
+actually means is simple, i'm facing truble to show stars, so always remember that...
+between your data and and checking data, must is you write "==" sign with spaces, see this below,
+<ul class="stars">
+    {% for stars in myStarsers %}
+        {% if stars == "1" %}
+                         ^    ^  
+        <li><i class="fa fa-star"></i></li> 
+        {% elif stars == "0" %} 
+        <li><i class="fa fa-star-half-o"></i></li> 
+        {% elif stars == "" %} 
+        <li><i class="fa fa-star-o"></i></li> 
+        {% endif %} 
+    {% endfor %} 
+</ul> 
+
+And with it, we also able to set our add to cart button, in perfect place.
+
+
+
+########################################################################
+####### Commit : 1nd ########################################################
+########################################################################
+
+
+
+
+
 
 
 

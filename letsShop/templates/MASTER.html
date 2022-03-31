@@ -50,11 +50,10 @@
                             <li class="scroll-to-section"><a href="{% url 'overall-women-area' %}" class="{% if request.path == '/womens/' %} active {% endif %}">Women's</a></li>
                             <li class="scroll-to-section"><a href="{% url 'overall-kids-area' %}" class="{% if request.path == '/kids/' %} active {% endif %}">Kid's</a></li>
                             <li class="submenu">
-                                <a href="javascript:;" class="{% if request.path == '/about-us/' or request.path == '/products/' or request.path == '/single-product/'  or request.path == '/contact-us/'  %} active {% endif %}">Pages</a>
+                                <a href="javascript:;" class="{% if request.path == '/about-us/' or request.path == '/products/' or request.path == '/contact-us/'  %} active {% endif %}">Pages</a>
                                 <ul>
                                     <li><a href="{% url 'about-us' %}">About Us</a></li>
                                     <li><a href="{% url 'products' %}">Products</a></li>
-                                    <li><a href="{% url 'single-product' %}">Single Product</a></li>
                                     <li><a href="{% url 'contact-us' %}">Contact Us</a></li>
                                 </ul>
                             </li>

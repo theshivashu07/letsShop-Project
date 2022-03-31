@@ -33,7 +33,7 @@ urlpatterns = [
     path('about-us/',views.aboutus,name="about-us"),
     path('contact-us/',views.contactus,name="contact-us"),
     path('products/',views.products,name="products"),
-    path('single-product/',views.singleproduct,name="single-product"),
+    path('single-product/<newsslug>',views.singleproduct,name="single-product"),
 
     path('explore/',views.explore,name="explore"), 
     path('womens/',views.overallwomenarea,name="overall-women-area"),

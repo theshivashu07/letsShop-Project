@@ -9,7 +9,7 @@ from addproducts.models import Product_Entries, OurAmazingTeam
 def index(request):
     return render(request,'index.html'); 
 
-def aboutus(request):
+def aboutus(request,):
     gettingData=OurAmazingTeam.objects.all();   # to get data just dual 
     data={'gettingData' : gettingData}
     return render(request,'about-us.html',data); 
@@ -20,8 +20,14 @@ def contactus(request):
 def products(request):
     return render(request,'products.html'); 
 
-def singleproduct(request):
-    return render(request,'single-product.html'); 
+def singleproduct(request,newsslug):
+    myData=Product_Entries.objects.get(product_slug=newsslug);
+    myStars=['1','1','1','0','']
+    data={
+        'myData' : myData,
+        'myStars' : myStars,
+    }
+    return render(request,'single-product.html',data);  
 
 def explore(request):
     return render(request,'explore.html'); 
