@@ -32,20 +32,19 @@ def singleproduct(request,newsslug):
 def explore(request):
     return render(request,'explore.html'); 
 
+
 def overallwomenarea(request):
     gettingData=getdataJustDual("Women's");   # to get data just dual 
     data={'gettingData' : gettingData}
-    return render(request,'overall-women-area.html',data); 
-
+    return render(request,'overall-___-area.html',data); 
 def overallmenarea(request):
     gettingData=getdataJustDual("Men's");   # to get data just dual 
     data={'gettingData' : gettingData}
-    return render(request,'overall-men-area.html',data); 
-
+    return render(request,'overall-___-area.html',data); 
 def overallkidsarea(request):
     gettingData=getdataJustDual("Kid's");   # to get data just dual 
     data={'gettingData' : gettingData}
-    return render(request,'overall-kids-area.html',data); 
+    return render(request,'overall-___-area.html',data); 
 
 
 # One extra function, suppose we have data but we want to dual it
