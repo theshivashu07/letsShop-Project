@@ -407,10 +407,25 @@ and only one if-elif-elif statement we using there, see below,
 and now our new file is "overall-products-area.html". 
 
 
+Oppppps!
+There is i did a big mistake, actually intially i make "overall-___-area.html" name's file.
+the suddnly change his name, but not write this name in views.py file. Thats why we again push data
+
+
 
 ########################################################################
-####### Commit : 1nd ########################################################
+####### Commit : 1st ########################################################
+####### Commit : 2nd ########################################################
 ########################################################################
+
+
+
+
+
+
+
+
+
 
 
 

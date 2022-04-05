@@ -36,15 +36,15 @@ def explore(request):
 def overallwomenarea(request):
     gettingData=getdataJustDual("Women's");   # to get data just dual 
     data={'gettingData' : gettingData}
-    return render(request,'overall-___-area.html',data); 
+    return render(request,'overall-products-area.html',data); 
 def overallmenarea(request):
     gettingData=getdataJustDual("Men's");   # to get data just dual 
     data={'gettingData' : gettingData}
-    return render(request,'overall-___-area.html',data); 
+    return render(request,'overall-products-area.html',data); 
 def overallkidsarea(request):
     gettingData=getdataJustDual("Kid's");   # to get data just dual 
     data={'gettingData' : gettingData}
-    return render(request,'overall-___-area.html',data); 
+    return render(request,'overall-products-area.html',data); 
 
 
 # One extra function, suppose we have data but we want to dual it
