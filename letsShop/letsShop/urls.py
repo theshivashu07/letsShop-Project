@@ -40,6 +40,9 @@ urlpatterns = [
     path('mens/',views.overallmenarea,name="overall-men-area"),
     path('kids/',views.overallkidsarea,name="overall-kids-area"),
 
+    path('cart/',views.cart,name="cart"), 
+    #path('cart-add/<slug:urllocation>',views.cartadd,name="cart-add"), 
+    path('cart-add/<slug:productsslug>/<path:urllocation>',views.cartadd,name="cart-add"), 
     # path('contact/',views.contact,name="contact"),
 ]
 
@@ -55,6 +58,30 @@ if settings.DEBUG:
 
 
 
+
+
+"""
+
+Way-1 : Here we use our first way, by urls
+| overall-products-area.html
+    <li><a type="submit" href="/cart-add/{{data.product_slug}}/{{request.path}}"><i class="fa fa-shopping-cart"></i></a></li>
+| urls.py
+    path('cart-add/<slug:productsslug>/<path:urllocation>',views.cartadd,name="cart-add"), 
+| views.py
+def cartadd(request,productsslug,urllocation): 
+    ...................
+    return redirect(urllocation); 
+
+Way-2 : Here we use our first way, by urls fuctions
+| overall-products-area.html
+    <li><a type="submit" href="{% url 'cart-add' urllocation=request.path productsslug=data.product_slug %}"><i class="fa fa-shopping-cart"></i></a></li>
+| urls.py
+    path('cart-add/<slug:productsslug>/<path:urllocation>',views.cartadd,name="cart-add"), 
+| views.py
+def cartadd(request,productsslug,urllocation): 
+
+
+"""
 
 
 '''

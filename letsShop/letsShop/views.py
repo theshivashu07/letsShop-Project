@@ -47,6 +47,17 @@ def overallkidsarea(request):
     return render(request,'overall-products-area.html',data); 
 
 
+def cartadd(request,productsslug,urllocation): 
+    paths=request.path
+    print(paths,productsslug,urllocation,sep=" ||||| ")
+    return redirect(urllocation); 
+def cart(request):
+    data={}
+    return render(request,'cart.html',data);
+
+# path('cart-add/<urllocation>/<productsslug>',views.cartadd,name="cart-add"), 
+
+
 # One extra function, suppose we have data but we want to dual it
 # Actually we have only three products, but we want to show as 6, that why it needed,
 def getdataJustDual(bases):

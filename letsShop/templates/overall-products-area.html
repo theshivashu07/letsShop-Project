@@ -48,9 +48,27 @@ Men
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
+                                            <!--
                                             <li><a href="/single-product/{{data.product_slug}}"><i class="fa fa-eye"></i></a></li>
                                             <li><a href="#"><i class="fa fa-star"></i></a></li>
                                             <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                            -->
+                                            <!--
+                                            <li><a href="/single-product/{{data.product_slug}}"><i class="fa fa-eye"></i></a></li>
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="mypath" value="{{request.path}}" />
+                                                {{request.path}} 
+                                                <li><input type="submit" href="/cart-add/" class="fa fa-shopping-cart" value="Add to CART" /> </li>
+                                            </form>
+                                            <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a></li>
+
+                                            <li><a type="submit" href="/cart-add/{{request.path}}{{data.product_slug}}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            -->
+                                            <li><a href="/single-product/{{data.product_slug}}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a type="submit" href="/cart-add/{{data.product_slug}}/{{request.path}}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            
+                                            <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="/media/{{data.product_image}}" alt="">

@@ -415,9 +415,55 @@ the suddnly change his name, but not write this name in views.py file. Thats why
 
 ########################################################################
 ####### Commit : 1st ########################################################
-####### Commit : 2nd ########################################################
+####### Commit : 1st 2.0 ######################################################
 ########################################################################
 
+
+
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 06-04-2022 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
+
+
+22 - Now we are again going to set add to cart button, or shoping button on top, 
+And also make a page for this, saperatly, and there show all add to cart products. 
+
+Right now, I's setup all product collection page correction, Actually there is i'm confused that...
+...that why things are not happenings, and then after a day, i find out, now see this below code, 
+
+Way-1 : Here we use our first way, by urls,
+| overall-products-area.html
+    <li><a type="submit" href="/cart-add/{{data.product_slug}}/{{request.path}}">................</a></li>
+| urls.py
+    path('cart-add/<slug:productsslug>/<path:urllocation>',views.cartadd,name="cart-add"), 
+| views.py
+def cartadd(request,productsslug,urllocation): 
+
+Way-2 : Here we use our first way, by urls fuctions
+| overall-products-area.html
+    <li><a type="submit" href="{% url 'cart-add' urllocation=request.path productsslug=data.product_slug %}">................</a></li>
+| urls.py
+    path('cart-add/<slug:productsslug>/<path:urllocation>',views.cartadd,name="cart-add"), 
+| views.py
+def cartadd(request,productsslug,urllocation): 
+
+
+
+########################################################################
+####### Commit : 1st  ########################################################
+########################################################################
 
 
 
