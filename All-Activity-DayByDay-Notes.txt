@@ -496,7 +496,7 @@ So this commit id before to create AddToCART model. SO be prapare it.....
 
 
 
-23 - And there is we create our model, and atteched it with both add to cart buttons, 
+23.1 - And there is we create our model, and atteched it with both add to cart buttons, 
 And we also recreate a views.py's function, so that our this procedure runs smoothly, 
 So this commit is after AddToCART model, so we commiting there too..... 
 
@@ -505,6 +505,22 @@ So this commit is after AddToCART model, so we commiting there too.....
 ########################################################################
 ####### Commit : 2nd ########################################################
 ########################################################################
+
+
+
+23.2 - Here we manage our duplicate entries, because sometimes if we already add to cart any product,
+then if we again click on it so this not added again, so we apply bariarrs there, so lets set this in that commit..... 
+
+
+
+########################################################################
+####### Commit : 3rd  ########################################################
+########################################################################
+
+
+
+
+
 
 
 

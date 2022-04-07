@@ -51,8 +51,13 @@ def overallkidsarea(request):
 
 
 def cartadd(request,productsslug,urllocation): 
-    myData=Product_Entries.objects.get(product_slug=productsslug);
     my_system = platform.uname()
+    # Below three lines are helping us to saving duplicate data entries.....
+    myData=AddToCART.objects.filter(os_name_holder=my_system.node, product_slug=productsslug);    
+    if(len(myData)>0):
+        return redirect(urllocation); 
+    # Here we getting a slugs product id,
+    myData=Product_Entries.objects.get(product_slug=productsslug);
     os_name_holder = my_system.node; 
     member_email = "";
     member_mno = "";
