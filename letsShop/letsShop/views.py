@@ -4,7 +4,6 @@ from django.shortcuts import render, redirect
 from addproducts.models import Product_Entries, OurAmazingTeam
 
 
-
 # Initial Function's to Display Pages
 def index(request):
     return render(request,'index.html'); 
@@ -72,12 +71,5 @@ def getdataJustDual(bases):
 
 
 
-
-
-# To check initially, how "HttpResponse" works.
-'''
-def index(request):
-        return HttpResponse("<b>Okay Google!</b>")
-'''
 
 
