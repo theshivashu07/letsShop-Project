@@ -1,7 +1,11 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
-from addproducts.models import Product_Entries, OurAmazingTeam
+from addproducts.models import Product_Entries, OurAmazingTeam, AddToCART
+# its because we want system related information, because of handling CART 
+import platform
+
+
 
 
 # Initial Function's to Display Pages
@@ -47,8 +51,15 @@ def overallkidsarea(request):
 
 
 def cartadd(request,productsslug,urllocation): 
-    paths=request.path
-    print(paths,productsslug,urllocation,sep=" ||||| ")
+    myData=Product_Entries.objects.get(product_slug=productsslug);
+    my_system = platform.uname()
+    os_name_holder = my_system.node; 
+    member_email = "";
+    member_mno = "";
+    product_id = myData.id;
+    product_slug = productsslug;
+    values = AddToCART( os_name_holder=os_name_holder, member_email=member_email, member_mno=member_mno, product_id=product_id, product_slug=product_slug)
+    values.save();
     return redirect(urllocation); 
 def cart(request):
     data={}
@@ -67,6 +78,11 @@ def getdataJustDual(bases):
     for data in myData:
         gettingData.append(data)
     return gettingData;
+
+
+
+
+
 
 
 

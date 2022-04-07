@@ -12,6 +12,7 @@ class Product_Entries(models.Model):
 	product_create_date = models.DateTimeField(auto_now_add=True)
 	product_update_date = models.DateTimeField(auto_now=True)
 
+# This is company personal employees infor addings...
 class OurAmazingTeam(models.Model):
 	member_name =  models.CharField(max_length=50);
 	member_role =  models.CharField(max_length=50);
@@ -22,7 +23,12 @@ class OurAmazingTeam(models.Model):
 	member_linkedin_id = models.CharField(max_length=100, null=True, blank=True, unique=True);
 	member_github_id = models.CharField(max_length=100, null=True, blank=True, unique=True); 
 
-
+class AddToCART(models.Model): 
+	os_name_holder =  models.CharField(max_length=50); 
+	member_email =  models.CharField(max_length=70); 
+	member_mno =  models.CharField(max_length=15); 
+	product_id = models.CharField(max_length=10); 
+	product_slug = models.CharField(max_length=50); 
 
 
 
