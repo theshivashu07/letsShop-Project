@@ -63,14 +63,36 @@ def cartadd(request,productsslug,urllocation):
     member_mno = "";
     product_id = myData.id;
     product_slug = productsslug;
-    values = AddToCART( os_name_holder=os_name_holder, member_email=member_email, member_mno=member_mno, product_id=product_id, product_slug=product_slug)
+    product_quantity = 1
+    values = AddToCART( os_name_holder=os_name_holder, member_email=member_email, member_mno=member_mno, product_id=product_id, product_slug=product_slug, product_quantity=product_quantity)
     values.save();
     return redirect(urllocation); 
+
 def cart(request):
-    data={}
+    my_system = platform.uname()
+    myData=AddToCART.objects.filter(os_name_holder=my_system.node);
+    myList=[];
+    for data in myData:
+        geteddata=Product_Entries.objects.get(id=data.product_id);
+        myList.append([data,geteddata])
+        print(myList[-1])
+    data={'gettingData':myList}
     return render(request,'cart.html',data);
 
-# path('cart-add/<urllocation>/<productsslug>',views.cartadd,name="cart-add"), 
+"""
+def cart(request):
+    my_system = platform.uname()
+    myData=AddToCART.objects.filter(os_name_holder=my_system.node);
+    myList=[];
+    for data in myData:
+        geteddata=Product_Entries.objects.get(id=data.product_id);
+        myList.append([data,geteddata])
+    data={'gettingData':myList}
+    return render(request,'cart.html',data);
+"""
+
+
+
 
 
 # One extra function, suppose we have data but we want to dual it
