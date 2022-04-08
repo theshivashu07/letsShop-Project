@@ -10,7 +10,7 @@ class saveOurAmazingTeam(admin.ModelAdmin):
 admin.site.register(OurAmazingTeam,saveOurAmazingTeam);
 
 class saveAddToCART(admin.ModelAdmin): 
-	list_display=('os_name_holder', 'member_email', 'member_mno', 'product_id', 'product_slug'); 
+	list_display=('os_name_holder', 'member_email', 'member_mno', 'product_id', 'product_slug', 'product_quantity'); 
 admin.site.register(AddToCART,saveAddToCART); 
 
 # Register your models here.

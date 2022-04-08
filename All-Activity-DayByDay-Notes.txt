@@ -521,6 +521,43 @@ then if we again click on it so this not added again, so we apply bariarrs there
 
 
 
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 08-04-2022 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
+
+
+24 - Here first we want to add one more field on AddToCART table, and name is "product_quantity",
+And that's it, actually i'm forgotting to add this field, so we make it that there..... 
+
+But unfortunatly its not heppens perfectly, so we want to again recreate database, so we want "22".
+means "date:07-04-2022" and commit no-1, and after mention field, we again do makemigrations and migrate, 
+by the way our AddToCART table not have any datasets there..... And then finally we again run this, okay....
+
+SO there is we do two commits:
+first is before to create model, so that in future if we want again add any field, then that time we considering this.....
+and second is just after this, and after also some file content addings...
+
+
+
+########################################################################
+####### Commit : 1st  ########################################################
+####### Commit : 2nd ########################################################
+########################################################################
+
+
+
+
+
 
 
 
