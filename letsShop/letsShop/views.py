@@ -72,26 +72,18 @@ def cart(request):
     my_system = platform.uname()
     myData=AddToCART.objects.filter(os_name_holder=my_system.node);
     myList=[];
+    totalCost=0;  # find total cost
+    totalProductQuentity=0; # find all product's quentity*cast
     for data in myData:
         geteddata=Product_Entries.objects.get(id=data.product_id);
         myList.append([data,geteddata])
         print(myList[-1])
-    data={'gettingData':myList}
-    return render(request,'cart.html',data);
-
-"""
-def cart(request):
-    my_system = platform.uname()
-    myData=AddToCART.objects.filter(os_name_holder=my_system.node);
-    myList=[];
-    for data in myData:
-        geteddata=Product_Entries.objects.get(id=data.product_id);
-        myList.append([data,geteddata])
-    data={'gettingData':myList}
-    return render(request,'cart.html',data);
-"""
-
-
+        # want to find all products 'total cost' and 'quentity*cast' below,
+        totalCost=int(data.product_quantity)*int(geteddata.product_price);
+        totalProductQuentity=1*int(data.product_quantity);
+    alloverData={'totalCost':totalCost,'totalProduct':len(myData),'totalProductQuentity':totalProductQuentity}
+    data={'gettingData':myList,'alloverData':alloverData}
+    return render(request,'cart.html',data); 
 
 
 

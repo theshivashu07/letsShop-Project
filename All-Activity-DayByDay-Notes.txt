@@ -568,6 +568,48 @@ and second is just after this, and after also some file content addings...
 
 
 
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 09-04-2022 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
+
+
+26 - Here we adding total cost feature in tamplate, and most important this is that,
+here we learn about how to we multiply two variable's data in django templates,
+In the below we discribe things, by the way we only use multiplication there...
+
+Ways : You can use the built-in "widthratio" template tag.
+>> a*b use {% widthratio a 1 b %}
+>> a/b use {% widthratio a b 1 %}
+For Example : we have product's price and quentity, then:
+>> Multiplication : {% widthratio data.price data.quentity 1 %}
+>> Division : {% widthratio data.price 1 data.quentity %}
+
+And more desigining related work we done there, and then commiting!
+
+
+
+########################################################################
+####### Commit : 1st  ########################################################
+########################################################################
+
+
+
+27 - 
+
+
+
+
+
 
 
 
