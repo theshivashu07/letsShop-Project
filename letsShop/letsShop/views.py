@@ -87,6 +87,29 @@ def cart(request):
 
 
 
+def updateQuantity(request,productsslug):
+    if request.method=="POST":
+        print("-------------------------------------------------------")
+        updatedproductquantity=request.POST["productquantity"]
+        print("-------------------------------------------------------")
+        values = AddToCART.objects.get(product_slug=productsslug);
+        print("-------------------------------------------------------")
+        values.product_quantity=updatedproductquantity;
+        print("-------------------------------------------------------")
+        values.save(); 
+        print("-------------------------------------------------------")
+        return redirect("/cart/"); 
+    productData=Product_Entries.objects.get(product_slug=productsslug);
+    cartedData=AddToCART.objects.get(product_slug=productsslug);
+    product_name=productData.product_name
+    product_quantity=cartedData.product_quantity
+    product_price=productData.product_price
+    product_totalprice=int(product_price)*int(product_quantity)
+    product_slug=productsslug
+    gettingData={'product_name':product_name, 'product_quantity':product_quantity, 'product_price':product_price, 'product_totalprice':product_totalprice, 'product_slug':product_slug}
+    data={'gettingData':gettingData}
+    return render(request,'updateQuantity.html',data); 
+
 # One extra function, suppose we have data but we want to dual it
 # Actually we have only three products, but we want to show as 6, that why it needed,
 def getdataJustDual(bases):

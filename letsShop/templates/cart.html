@@ -51,7 +51,7 @@ Product Detail
                     <p><h6>Product Quantity :  <b>{{cartData.product_quantity}}</b></h6>
                     <h6>Product Price : <b>{% widthratio cartData.product_quantity 1 productData.product_price %}/-</b></h6>
                      <small><b style="color: lightgray;">({{productData.product_price}}/- each product's cost.)</b></small></p>
-                    <div class="right-content"><a href="#"  style="align-items:right;">Want to update Quantity</a></div>
+                    <div class="right-content"><a href="/updatequantity/{{productData.product_slug}}"  style="align-items:right;">Want to update Quantity</a></div>
                     <span class="price"></span>
 
                     <ul class="stars">
@@ -89,7 +89,7 @@ Product Detail
             </div>
         </div>
     </section>
-                    <span class="price"></span>
+    <span class="price"></span>
     <!-- ***** Product Area Ends ***** -->
     {% endfor %}   
 
@@ -119,7 +119,7 @@ Product Detail
                         <ul class="stars" style="background-color: dimgray; padding: 10px;">
                             <span class="price"></span>
                             <br>
-                            <div class="total" style="background-color: red">
+                            <div class="total" style="background-color: red"> 
                                 <div class="main-border-button"><a href="#">All Payments in One Step</a></div>
                             </div>
                             <!-- <div class="total" style="background-color: dimgray">
