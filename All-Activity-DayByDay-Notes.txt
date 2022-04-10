@@ -625,10 +625,14 @@ And more desigining related work we done there, and then commiting!
 so we create a one url and view and one html file, and all's name is "updateQuantity" 
 And yess okay this feature is now working well, and now we commiting! 
 
+But here is few problem comes if we add more products. Not a big issue,
+Actually we counting total product's price and count, but not adding old values,
+and thats why only last product's value and count showing there, but we solve this...
 
 
 ########################################################################
 ####### Commit : 1st  ########################################################
+####### Commit : 2nd ########################################################
 ########################################################################
 
 

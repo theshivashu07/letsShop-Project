@@ -77,27 +77,21 @@ def cart(request):
     for data in myData:
         geteddata=Product_Entries.objects.get(id=data.product_id);
         myList.append([data,geteddata])
-        print(myList[-1])
         # want to find all products 'total cost' and 'quentity*cast' below,
-        totalCost=int(data.product_quantity)*int(geteddata.product_price);
-        totalProductQuentity=1*int(data.product_quantity);
+        totalCost=(int(data.product_quantity)*int(geteddata.product_price)) + totalCost; 
+        totalProductQuentity=(1*int(data.product_quantity)) + totalProductQuentity;
     alloverData={'totalCost':totalCost,'totalProduct':len(myData),'totalProductQuentity':totalProductQuentity}
     data={'gettingData':myList,'alloverData':alloverData}
     return render(request,'cart.html',data); 
 
 
-
+# here we update our quentity by post method
 def updateQuantity(request,productsslug):
     if request.method=="POST":
-        print("-------------------------------------------------------")
         updatedproductquantity=request.POST["productquantity"]
-        print("-------------------------------------------------------")
         values = AddToCART.objects.get(product_slug=productsslug);
-        print("-------------------------------------------------------")
         values.product_quantity=updatedproductquantity;
-        print("-------------------------------------------------------")
         values.save(); 
-        print("-------------------------------------------------------")
         return redirect("/cart/"); 
     productData=Product_Entries.objects.get(product_slug=productsslug);
     cartedData=AddToCART.objects.get(product_slug=productsslug);
