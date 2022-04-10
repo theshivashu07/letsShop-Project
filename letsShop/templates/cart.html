@@ -33,7 +33,7 @@ Product Detail
 
 
 
-    {% for cartData, productData in gettingData %}
+    {% for cartData, productData, paymentData in gettingData %}
 
     <!-- ***** Product Area Starts ***** -->
     <section class="section" id="product">
@@ -68,7 +68,11 @@ Product Detail
 
                         <ul>
                             <div class="total">
-                                <div class="main-border-button" style="background-color: red"><a href="#">Payment Now</a></div>
+                                {% if paymentData != "" %}
+                                <div class="main-border-button"><a href="#">Product on the way</a></div>
+                                {% else %}
+                                <div class="main-border-button" style="background-color: red"><a href="/payments/{{productData.product_slug}}">Payment Now</a></div>
+                                {% endif %}
                             </div>
                         </ul>
                         <!-- <ul>

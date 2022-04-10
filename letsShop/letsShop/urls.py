@@ -42,8 +42,9 @@ urlpatterns = [
 
     path('cart/',views.cart,name="cart"), 
     path('cart-add/<slug:productsslug>/<path:urllocation>',views.cartadd,name="cart-add"), 
-    path('updatequantity/',views.updateQuantity,name="updatequantity"),
+    # path('updatequantity/',views.updateQuantity,name="updatequantity"),
     path('updatequantity/<slug:productsslug>',views.updateQuantity,name="updatequantity"),
+    path('payments/<slug:productsslug>',views.payments,name="payments"),
 ]
 
 

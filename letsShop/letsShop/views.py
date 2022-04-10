@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
-from addproducts.models import Product_Entries, OurAmazingTeam, AddToCART
+from addproducts.models import Product_Entries, OurAmazingTeam, AddToCART, Payment
 # its because we want system related information, because of handling CART 
 import platform
 
@@ -58,13 +58,14 @@ def cartadd(request,productsslug,urllocation):
         return redirect(urllocation); 
     # Here we getting a slugs product id,
     myData=Product_Entries.objects.get(product_slug=productsslug);
-    os_name_holder = my_system.node; 
-    member_email = "";
-    member_mno = "";
-    product_id = myData.id;
-    product_slug = productsslug;
-    product_quantity = 1
-    values = AddToCART( os_name_holder=os_name_holder, member_email=member_email, member_mno=member_mno, product_id=product_id, product_slug=product_slug, product_quantity=product_quantity)
+    values = AddToCART( 
+        os_name_holder=my_system.node, 
+        member_email="", 
+        member_mno="", 
+        product_id=myData.id, 
+        product_slug=productsslug, 
+        product_quantity=1
+    )
     values.save();
     return redirect(urllocation); 
 
@@ -72,16 +73,27 @@ def cart(request):
     my_system = platform.uname()
     myData=AddToCART.objects.filter(os_name_holder=my_system.node);
     myList=[];
-    totalCost=0;  # find total cost
-    totalProductQuentity=0; # find all product's quentity*cast
+    # find total cost __and__ find all product's quentity*cast __and__ total product
+    totalCost,totalProductQuentity,totalProduct=0,0,0; 
     for data in myData:
-        geteddata=Product_Entries.objects.get(id=data.product_id);
-        myList.append([data,geteddata])
-        # want to find all products 'total cost' and 'quentity*cast' below,
-        totalCost=(int(data.product_quantity)*int(geteddata.product_price)) + totalCost; 
-        totalProductQuentity=(1*int(data.product_quantity)) + totalProductQuentity;
-    alloverData={'totalCost':totalCost,'totalProduct':len(myData),'totalProductQuentity':totalProductQuentity}
-    data={'gettingData':myList,'alloverData':alloverData}
+        getedproductdata = Product_Entries.objects.get(id=data.product_id);
+        getedpaymentdata = Payment.objects.filter(product_id=data.product_id);
+        getedpaymentdata = getedpaymentdata if(len(getedpaymentdata)>0) else "";
+        myList.append([data,getedproductdata,getedpaymentdata])  
+        if(getedpaymentdata!=""):
+            continue;
+        # want to find all products 'total cost' and 'quentity*cast' below and total product
+        totalProduct = totalProduct + 1;
+        totalCost = (int(data.product_quantity)*int(getedproductdata.product_price)) + totalCost; 
+        totalProductQuentity = (1*int(data.product_quantity)) + totalProductQuentity;
+    data={
+        'gettingData':myList,
+        'alloverData':{
+            'totalCost':totalCost,
+            'totalProduct':totalProduct,
+            'totalProductQuentity':totalProductQuentity
+        }
+    }
     return render(request,'cart.html',data); 
 
 
@@ -95,14 +107,39 @@ def updateQuantity(request,productsslug):
         return redirect("/cart/"); 
     productData=Product_Entries.objects.get(product_slug=productsslug);
     cartedData=AddToCART.objects.get(product_slug=productsslug);
-    product_name=productData.product_name
-    product_quantity=cartedData.product_quantity
-    product_price=productData.product_price
-    product_totalprice=int(product_price)*int(product_quantity)
-    product_slug=productsslug
-    gettingData={'product_name':product_name, 'product_quantity':product_quantity, 'product_price':product_price, 'product_totalprice':product_totalprice, 'product_slug':product_slug}
-    data={'gettingData':gettingData}
+    gettingData={
+        'product_name' : productData.product_name, 
+        'product_quantity' : cartedData.product_quantity, 
+        'product_price' : productData.product_price, 
+        'product_totalprice' : int(cartedData.product_quantity) * int(productData.product_price),  
+        'product_slug' : productsslug
+    }
+    data={'gettingData' : gettingData}
     return render(request,'updateQuantity.html',data); 
+
+
+def payments(request,productsslug):
+    productData=Product_Entries.objects.get(product_slug=productsslug);
+    cartedData=AddToCART.objects.get(product_slug=productsslug);
+    values = Payment( 
+        product_id = productData.id, 
+        addtocart_id = cartedData.id, 
+        product_slug = productsslug, 
+        product_quantity = cartedData.product_quantity, 
+        payment_total_ammount = int(cartedData.product_quantity) * int(productData.product_price), 
+        is_product_delivered = "False"
+    )
+    values.save();
+    return redirect("/cart/"); 
+
+
+
+
+
+
+
+
+
 
 # One extra function, suppose we have data but we want to dual it
 # Actually we have only three products, but we want to show as 6, that why it needed,
