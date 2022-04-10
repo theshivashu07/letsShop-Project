@@ -636,7 +636,20 @@ and thats why only last product's value and count showing there, but we solve th
 ########################################################################
 
 
+28 - Now we are working on payment system, by the way now not really,
+actually now we only create a model and there we do entry, 
+and set a flow that if we do payment then how the things are heppens inside,
+Here we not do transection exectly, only set flow, so remember it always.....
 
+and we do three commits there, before create model and after it.....
+and third is on the ways's workings.....
+
+
+########################################################################
+####### Commit : 3rd  ########################################################
+####### Commit : 4th  ########################################################
+####### Commit : 5th ########################################################
+########################################################################
 
 
 

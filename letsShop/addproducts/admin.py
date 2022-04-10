@@ -1,5 +1,5 @@
 from django.contrib import admin
-from addproducts.models import Product_Entries, OurAmazingTeam, AddToCART
+from addproducts.models import Product_Entries, OurAmazingTeam, AddToCART, Payment
 
 class saveProductEntries(admin.ModelAdmin):
 	list_display=('product_from', 'product_name', 'product_price', 'product_create_date', 'product_update_date','product_image');
@@ -13,9 +13,12 @@ class saveAddToCART(admin.ModelAdmin):
 	list_display=('os_name_holder', 'member_email', 'member_mno', 'product_id', 'product_slug', 'product_quantity'); 
 admin.site.register(AddToCART,saveAddToCART); 
 
+class savePayment(admin.ModelAdmin): 
+	list_display=('product_id', 'is_product_delivered', 'product_slug', 'product_quantity', 'payment_total_ammount', 'payment_date'); 
+admin.site.register(Payment,savePayment); 
+
+
 # Register your models here.
-
-
 
 
 
