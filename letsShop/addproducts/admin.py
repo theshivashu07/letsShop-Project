@@ -10,11 +10,11 @@ class saveOurAmazingTeam(admin.ModelAdmin):
 admin.site.register(OurAmazingTeam,saveOurAmazingTeam);
 
 class saveAddToCART(admin.ModelAdmin): 
-	list_display=('os_name_holder', 'member_email', 'member_mno', 'product_id', 'product_slug', 'product_quantity'); 
+	list_display=('os_name_holder', 'member_email', 'member_mno', 'product_slug', 'product_quantity', 'is_payment_done', 'is_product_delivered'); 
 admin.site.register(AddToCART,saveAddToCART); 
 
 class savePayment(admin.ModelAdmin): 
-	list_display=('product_id', 'is_product_delivered', 'product_slug', 'product_quantity', 'payment_total_ammount', 'payment_date'); 
+	list_display=( 'product_slug', 'product_quantity', 'payment_total_ammount', 'payment_date', 'is_product_delivered' ); 
 admin.site.register(Payment,savePayment); 
 
 

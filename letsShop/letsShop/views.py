@@ -64,10 +64,42 @@ def cartadd(request,productsslug,urllocation):
         member_mno="", 
         product_id=myData.id, 
         product_slug=productsslug, 
-        product_quantity=1
+        product_quantity=1,
+        is_payment_done="No",
+        is_product_delivered="No",
     )
     values.save();
     return redirect(urllocation); 
+
+def cart(request):
+    my_system = platform.uname()
+    # below one line is vyvastha, suppose we product divered then not need that product show on 'cart'
+    myData=AddToCART.objects.filter(os_name_holder=my_system.node, is_product_delivered="No");
+    myList=[];
+    # find 'total cost' __and__ find all 'product's quentity*cast' __and__ 'total product'
+    totalCost,totalProductQuentity,totalProduct=0,0,0; 
+    for data in myData:
+        getedproductdata = Product_Entries.objects.get(id=data.product_id);
+        myList.append([data,getedproductdata])
+        # condition is if our payment is already done then why we count this mony,
+        # actually we want to add carts which payments done, but not count on "alloverData"
+        if(data.is_payment_done=="Yes"):
+            continue;
+        # want to find 'total cost' __and__ find all 'product's quentity*cast' __and__ 'total product'
+        totalProduct = totalProduct + 1;
+        totalCost = (int(data.product_quantity)*int(getedproductdata.product_price)) + totalCost; 
+        totalProductQuentity = (1*int(data.product_quantity)) + totalProductQuentity;
+    data={
+        'gettingData':myList,
+        'alloverData':{ 
+            'totalCost':totalCost, 
+            'totalProduct':totalProduct, 
+            'totalProductQuentity':totalProductQuentity, 
+        }
+    }
+    return render(request,'cart.html',data); 
+
+"""
 
 def cart(request):
     my_system = platform.uname()
@@ -78,7 +110,7 @@ def cart(request):
     for data in myData:
         getedproductdata = Product_Entries.objects.get(id=data.product_id);
         getedpaymentdata = Payment.objects.filter(product_id=data.product_id);
-        getedpaymentdata = getedpaymentdata if(len(getedpaymentdata)>0) else "";
+        getedpaymentdata = getedpaymentdata if(len(getedpaymentdata)>0) else ""; 
         myList.append([data,getedproductdata,getedpaymentdata])  
         if(getedpaymentdata!=""):
             continue;
@@ -88,13 +120,20 @@ def cart(request):
         totalProductQuentity = (1*int(data.product_quantity)) + totalProductQuentity;
     data={
         'gettingData':myList,
-        'alloverData':{
-            'totalCost':totalCost,
-            'totalProduct':totalProduct,
-            'totalProductQuentity':totalProductQuentity
+        'alloverData':{ 
+            'totalCost':totalCost, 
+            'totalProduct':totalProduct, 
+            'totalProductQuentity':totalProductQuentity, 
         }
     }
     return render(request,'cart.html',data); 
+"""
+
+
+
+
+
+
 
 
 # here we update our quentity by post method
@@ -120,14 +159,17 @@ def updateQuantity(request,productsslug):
 
 def payments(request,productsslug):
     productData=Product_Entries.objects.get(product_slug=productsslug);
-    cartedData=AddToCART.objects.get(product_slug=productsslug);
+    cartedData=AddToCART.objects.filter(product_slug=productsslug)[0];
+    cartedData.is_payment_done="Yes"
+    cartedData.save()
+    # paymentData=Payment.objects.get(product_slug=productsslug);
     values = Payment( 
         product_id = productData.id, 
         addtocart_id = cartedData.id, 
         product_slug = productsslug, 
         product_quantity = cartedData.product_quantity, 
         payment_total_ammount = int(cartedData.product_quantity) * int(productData.product_price), 
-        is_product_delivered = "False"
+        is_product_delivered = "No"
     )
     values.save();
     return redirect("/cart/"); 
