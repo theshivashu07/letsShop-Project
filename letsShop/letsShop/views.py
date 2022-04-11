@@ -52,10 +52,11 @@ def overallkidsarea(request):
 
 def cartadd(request,productsslug,urllocation): 
     my_system = platform.uname()
-    # Below three lines are helping us to saving duplicate data entries.....
-    myData=AddToCART.objects.filter(os_name_holder=my_system.node, product_slug=productsslug);    
-    if(len(myData)>0):
-        return redirect(urllocation); 
+    # Below lines we are protecting to save data re-entry, if last's payment done then skipp, otherwise incress quentity,
+    myData=AddToCART.objects.filter(os_name_holder=my_system.node, product_slug=productsslug, is_payment_done="No");    
+    # myData=myData[len(myData)-1];  # its because we want to check only lasts
+    if(len(myData)>0): 
+        return redirect('/updatequantity/'+myData[0].product_slug)
     # Here we getting a slugs product id,
     myData=Product_Entries.objects.get(product_slug=productsslug);
     values = AddToCART( 
@@ -67,7 +68,7 @@ def cartadd(request,productsslug,urllocation):
         product_quantity=1,
         is_payment_done="No",
         is_product_delivered="No",
-    )
+    ) 
     values.save();
     return redirect(urllocation); 
 
@@ -99,53 +100,17 @@ def cart(request):
     }
     return render(request,'cart.html',data); 
 
-"""
-
-def cart(request):
-    my_system = platform.uname()
-    myData=AddToCART.objects.filter(os_name_holder=my_system.node);
-    myList=[];
-    # find total cost __and__ find all product's quentity*cast __and__ total product
-    totalCost,totalProductQuentity,totalProduct=0,0,0; 
-    for data in myData:
-        getedproductdata = Product_Entries.objects.get(id=data.product_id);
-        getedpaymentdata = Payment.objects.filter(product_id=data.product_id);
-        getedpaymentdata = getedpaymentdata if(len(getedpaymentdata)>0) else ""; 
-        myList.append([data,getedproductdata,getedpaymentdata])  
-        if(getedpaymentdata!=""):
-            continue;
-        # want to find all products 'total cost' and 'quentity*cast' below and total product
-        totalProduct = totalProduct + 1;
-        totalCost = (int(data.product_quantity)*int(getedproductdata.product_price)) + totalCost; 
-        totalProductQuentity = (1*int(data.product_quantity)) + totalProductQuentity;
-    data={
-        'gettingData':myList,
-        'alloverData':{ 
-            'totalCost':totalCost, 
-            'totalProduct':totalProduct, 
-            'totalProductQuentity':totalProductQuentity, 
-        }
-    }
-    return render(request,'cart.html',data); 
-"""
-
-
-
-
-
-
-
 
 # here we update our quentity by post method
 def updateQuantity(request,productsslug):
     if request.method=="POST":
         updatedproductquantity=request.POST["productquantity"]
-        values = AddToCART.objects.get(product_slug=productsslug);
+        values = AddToCART.objects.get(product_slug=productsslug, is_payment_done="No");
         values.product_quantity=updatedproductquantity;
         values.save(); 
         return redirect("/cart/"); 
     productData=Product_Entries.objects.get(product_slug=productsslug);
-    cartedData=AddToCART.objects.get(product_slug=productsslug);
+    cartedData=AddToCART.objects.get(product_slug=productsslug, is_payment_done="No");
     gettingData={
         'product_name' : productData.product_name, 
         'product_quantity' : cartedData.product_quantity, 
@@ -159,7 +124,7 @@ def updateQuantity(request,productsslug):
 
 def payments(request,productsslug):
     productData=Product_Entries.objects.get(product_slug=productsslug);
-    cartedData=AddToCART.objects.filter(product_slug=productsslug)[0];
+    cartedData=AddToCART.objects.get(product_slug=productsslug, is_payment_done="No");
     cartedData.is_payment_done="Yes"
     cartedData.save()
     # paymentData=Payment.objects.get(product_slug=productsslug);

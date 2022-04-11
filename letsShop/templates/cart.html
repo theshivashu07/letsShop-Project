@@ -53,7 +53,7 @@ Product Detail
                      <small><b style="color: lightgray;">({{productData.product_price}}/- each product's cost.)</b></small></p>
                      {% if cartData.is_payment_done == "Yes" %}
                     <div class="right-content" style="color: blue;">Want to update Quantity</div>
-                     <small><b style="color: dimgray;">Note : After ones payment done, updation disabled!</b></small></p>
+                     <small><b style="color: dimgray;">Note : After ones payment done, quantity updation disabled!</b></small></p>
                     {% else %}
                     <div class="right-content"><a href="/updatequantity/{{productData.product_slug}}" style="align-items:right;">Want to update Quantity</a></div>
                     {% endif %}

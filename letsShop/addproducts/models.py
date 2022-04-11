@@ -11,6 +11,8 @@ class Product_Entries(models.Model):
 	product_slug = AutoSlugField(populate_from='product_name', unique=True, null=True, default=None);
 	product_create_date = models.DateTimeField(auto_now_add=True)
 	product_update_date = models.DateTimeField(auto_now=True)
+	def __str__(self):
+		return f"We adding \"{self.product_name}\" product, for \"{self.product_from}\". Price : {self.product_price}/-";
 
 # This is company personal employees infor addings...
 class OurAmazingTeam(models.Model):
@@ -22,6 +24,8 @@ class OurAmazingTeam(models.Model):
 	member_twitter_id = models.CharField(max_length=100, null=True, blank=True, unique=True);
 	member_linkedin_id = models.CharField(max_length=100, null=True, blank=True, unique=True);
 	member_github_id = models.CharField(max_length=100, null=True, blank=True, unique=True); 
+	def __str__(self):
+		return  f"\"{self.member_name}\" has joined our team, as a \"{self.member_role}\"";
 
 # Here we manage all cart related data
 class AddToCART(models.Model): 
@@ -34,6 +38,8 @@ class AddToCART(models.Model):
 	# Under Both of then, 'No' then False,  and 'Yes' then True 
 	is_payment_done =  models.CharField(max_length=5, null=True, blank=True); 
 	is_product_delivered =  models.CharField(max_length=5, null=True, blank=True); 
+	def __str__(self):
+		return  f"{self.product_slug}'s {self.product_quantity} product's Added on CART!"
 
 # This is the place of payment
 class Payment(models.Model): 
@@ -44,6 +50,8 @@ class Payment(models.Model):
 	payment_total_ammount = models.CharField(max_length=10); 
 	payment_date = models.DateTimeField(auto_now_add=True)
 	is_product_delivered =  models.CharField(max_length=5); 
+	def __str__(self):
+		return f"{self.product_slug}'s {self.product_quantity} product's payment is DONE!";
 
 
 

@@ -18,6 +18,17 @@ class savePayment(admin.ModelAdmin):
 admin.site.register(Payment,savePayment); 
 
 
+
+"""
+# Alternative of above,
+admin.site.register(Product_Entries); 
+admin.site.register(OurAmazingTeam); 
+admin.site.register(AddToCART); 
+admin.site.register(Payment); 
+"""
+
+
+
 # Register your models here.
 
 

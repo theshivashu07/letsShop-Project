@@ -673,13 +673,32 @@ and third is on the ways's workings.....
 29 - today we working on payment's way only, actually we want many changes on there, 
 because in a cart we want to do many changes, because if payment is done then on cart show different things,
 so actually we want many changes there, so may be many commits we do there,
-Under 'cart' we manage many things, nnot possible to discribe, but now cart option works well!
+Actually there we make two more fields on 'AddToCart' model, so that we manage our payment and delivery,
+And under 'cart' we manage many things, nnot possible to discribe, but now cart option works well!
 
 
 
 ########################################################################
 ####### Commit : 1st  ########################################################
 ########################################################################
+
+
+30 - Listen ver clearly, now we create many feature, who works smoothly, but first listen one note below,
+Here is we order product directly also, if we tap there so one product automatically added on cart,
+but if you again click it, then it transfer you product's ordering page, and there is you set your quentity,
+And yess if you ones pay payment, then if you more product adding on cart then it show saperatly,
+and then things are again saperated, means in ones click cart by 1 quentity and other clicks it redirect on product's ordering page. 
+
+And actually there is we do many things on views.py file. Actually now i'm satisfide because i do that what i want now!
+And we do add many more features, but after this commit!
+
+
+
+########################################################################
+####### Commit : 2nd ########################################################
+########################################################################
+
+
 
 
 
