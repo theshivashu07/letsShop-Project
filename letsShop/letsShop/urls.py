@@ -45,6 +45,7 @@ urlpatterns = [
     # path('updatequantity/',views.updateQuantity,name="updatequantity"),
     path('updatequantity/<slug:productsslug>',views.updateQuantity,name="updatequantity"),
     path('payments/<slug:productsslug>',views.payments,name="payments"),
+    #path('allpayments/<slug:productsslug>',views.allpayments,name="allpayments"),
 ]
 
 
