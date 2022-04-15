@@ -123,41 +123,29 @@ def updateQuantity(request,productsslug):
 
 
 def payments(request,productsslug): 
+    def myFunc(productsslug):
+        productData=Product_Entries.objects.get(product_slug=productsslug);
+        cartedData=AddToCART.objects.get(product_slug=productsslug, is_payment_done="No");
+        cartedData.is_payment_done="Yes"
+        cartedData.save()
+        # paymentData=Payment.objects.get(product_slug=productsslug);
+        values = Payment( 
+            product_id = productData.id, 
+            addtocart_id = cartedData.id, 
+            product_slug = productsslug, 
+            product_quantity = cartedData.product_quantity, 
+            payment_total_ammount = int(cartedData.product_quantity) * int(productData.product_price), 
+            is_product_delivered = "No"
+        )
+        values.save();
+    # All the this function's real working code is there.....
     if(productsslug=="all-payments"):
         my_system = platform.uname()
         myData=AddToCART.objects.filter(os_name_holder=my_system.node, is_payment_done="No");
         for data in myData:
-            # shift control data's productsslug to "productsslug" 
-            productsslug=data.product_slug;  
-            productData=Product_Entries.objects.get(product_slug=productsslug); 
-            cartedData=AddToCART.objects.get(product_slug=productsslug, is_payment_done="No"); 
-            cartedData.is_payment_done="Yes"; 
-            cartedData.save(); 
-            # paymentData=Payment.objects.get(product_slug=productsslug);
-            values = Payment( 
-                product_id = productData.id, 
-                addtocart_id = cartedData.id, 
-                product_slug = productsslug, 
-                product_quantity = cartedData.product_quantity, 
-                payment_total_ammount = int(cartedData.product_quantity) * int(productData.product_price), 
-                is_product_delivered = "No" 
-            )
-            values.save();
+            myFunc(data.product_slug)
         return redirect("/cart/"); 
-    productData=Product_Entries.objects.get(product_slug=productsslug);
-    cartedData=AddToCART.objects.get(product_slug=productsslug, is_payment_done="No");
-    cartedData.is_payment_done="Yes"
-    cartedData.save()
-    # paymentData=Payment.objects.get(product_slug=productsslug);
-    values = Payment( 
-        product_id = productData.id, 
-        addtocart_id = cartedData.id, 
-        product_slug = productsslug, 
-        product_quantity = cartedData.product_quantity, 
-        payment_total_ammount = int(cartedData.product_quantity) * int(productData.product_price), 
-        is_product_delivered = "No"
-    )
-    values.save();
+    myFunc(productsslug)
     return redirect("/cart/"); 
 
 

@@ -720,10 +720,14 @@ And we do add many more features, but after this commit!
 31 - Now we are working on "All Payments in One Step" feature,
 so that we done all payment's in one click, thats the bestest feature there.
 
+Here in first commit we do make simple code but because we repeate same code there,
+so under second commit we do sort our this code, using functional programming. thatsit.
+
 
 
 ########################################################################
 ####### Commit : 1st  ########################################################
+####### Commit : 2nd ########################################################
 ########################################################################
 
 
