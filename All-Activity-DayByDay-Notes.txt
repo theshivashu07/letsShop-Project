@@ -768,7 +768,7 @@ Here is i'm doing two commits,
 first commit is for "if you want to cancel order, but not remove on cart", means on cart show same as before payments.
 [Working on 'Canceled This Order' - payment remove, but cart not remove]
 And second commit is for "if you want to cancel order, and also remove on cart", 
-[ Working on 'Canceled This Order' - payment and cart both remove]
+[ Working on 'Canceled This Order' - payment and cart both remove] 
 
 
 

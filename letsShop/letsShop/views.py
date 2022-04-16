@@ -156,6 +156,13 @@ def removeCart(request,productsslug):
 
 
 def canceledThisOrder(request,addtocart): 
+    # below code is if you want to cancel order, and also remove on cart...
+    cartedData=AddToCART.objects.get(id=addtocart); 
+    paymentData=Payment.objects.get(addtocart_id=addtocart);
+    cartedData.delete(); 
+    paymentData.delete(); 
+    return redirect("/cart/"); 
+    '''
     # below code is if you want to cancel order, but not remove on cart...
     cartedData=AddToCART.objects.get(id=addtocart); 
     cartedData.is_payment_done="No"
@@ -163,6 +170,7 @@ def canceledThisOrder(request,addtocart):
     paymentData=Payment.objects.get(addtocart_id=addtocart);
     paymentData.delete(); 
     return redirect("/cart/"); 
+    '''
 
 
 
