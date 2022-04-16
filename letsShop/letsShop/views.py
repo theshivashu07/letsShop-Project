@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
-from addproducts.models import Product_Entries, OurAmazingTeam, AddToCART, Payment
+from addproducts.models import Product_Entries, OurAmazingTeam, AddToCART, Payment, SignIn, LogIn
 # its because we want system related information, because of handling CART 
 import platform
 
