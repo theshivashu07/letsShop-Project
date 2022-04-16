@@ -760,7 +760,22 @@ so i'm including this feature in my project too.....
 ########################################################################
 
 
+33 - Now we are working on "Canceled This Order" feature, because its must that if user want to cancel product,
+then this is also possible to doing by user, so this commit is overall after creating this cfeature implementations... 
+actually here wa want to take cart id, so that according to this we remove this product order so that we pass id there,
 
+Here is i'm doing two commits, 
+first commit is for "if you want to cancel order, but not remove on cart", means on cart show same as before payments.
+[Working on 'Canceled This Order' - payment remove, but cart not remove]
+And second commit is for "if you want to cancel order, and also remove on cart", 
+[ Working on 'Canceled This Order' - payment and cart both remove]
+
+
+
+########################################################################
+####### Commit : 2nd ########################################################
+####### Commit : 3rd ########################################################
+########################################################################
 
 
 

@@ -143,7 +143,7 @@ def payments(request,productsslug):
         my_system = platform.uname()
         myData=AddToCART.objects.filter(os_name_holder=my_system.node, is_payment_done="No");
         for data in myData:
-            myFunc(data.product_slug)
+            myFunc(data.product_slug) 
         return redirect("/cart/"); 
     myFunc(productsslug)
     return redirect("/cart/"); 
@@ -155,9 +155,14 @@ def removeCart(request,productsslug):
     return redirect("/cart/"); 
 
 
-
-
-        
+def canceledThisOrder(request,addtocart): 
+    # below code is if you want to cancel order, but not remove on cart...
+    cartedData=AddToCART.objects.get(id=addtocart); 
+    cartedData.is_payment_done="No"
+    cartedData.save()
+    paymentData=Payment.objects.get(addtocart_id=addtocart);
+    paymentData.delete(); 
+    return redirect("/cart/"); 
 
 
 

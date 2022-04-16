@@ -47,7 +47,9 @@ urlpatterns = [
     path('payments/<slug:productsslug>',views.payments,name="payments"),
     #path('allpayments/<slug:productsslug>',views.allpayments,name="allpayments"),
     path('removecart/<slug:productsslug>',views.removeCart,name="removecart"),
-]
+    # actually here wa want to take cart id, so that according to this we remove this product order
+    path('canceledthisorder/<int:addtocart>',views.canceledThisOrder,name="canceledthisorder"),
+] 
 
 
 
