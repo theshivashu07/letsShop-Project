@@ -49,24 +49,25 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="{% url '' %}"  class="{% if request.path == '/' %} active {% endif %}">Home</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'overall-men-area' %}" class="{% if request.path == '/mens/' %} active {% endif %}">Men's</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'overall-women-area' %}" class="{% if request.path == '/womens/' %} active {% endif %}">Women's</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'overall-kids-area' %}" class="{% if request.path == '/kids/' %} active {% endif %}">Kid's</a></li>
                             <li class="submenu">
-                                <a href="javascript:;" class="{% if request.path == '/about-us/' or request.path == '/products/' or request.path == '/contact-us/'  %} active {% endif %}">Pages</a>
+                                <a href="javascript:;" class="{% if request.path == '/mens/' or request.path == '/womens/' or request.path == '/kids/' or request.path == '/products/' %} active {% endif %}"> Products</a>
+                                <ul>
+                                    <li><a href="{% url 'overall-men-area' %}">Men's</a></li>
+                                    <li><a href="{% url 'overall-women-area' %}">Women's</a></li>
+                                    <li><a href="{% url 'overall-kids-area' %}">Kid's</a></li>
+                                    <li><a href="{% url 'products' %}">Latest</a></li> 
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:;" class="{% if request.path == '/about-us/' or request.path == '/contact-us/'  %} active {% endif %}">Pages</a>
                                 <ul>
                                     <li><a href="{% url 'about-us' %}">About Us</a></li>
-                                    <li><a href="{% url 'products' %}">Products</a></li>
                                     <li><a href="{% url 'contact-us' %}">Contact Us</a></li>
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="{% url 'explore' %}"  class="{% if request.path == '/explore/' %} active {% endif %}">Explore</a></li>
-                            <!--
-                                <li><a href="#"><i class="fa fa-bell fa-2x"></i></a></li>
-                                <li><a href="#"><i class="fa fa-cart-shopping-fast"></i></a></li>
-                            -->
-                                 <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart fa-2x"></i></a></li>
-                        </ul>        
+                            <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart fa-2x"></i></a></li>
+                        </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>

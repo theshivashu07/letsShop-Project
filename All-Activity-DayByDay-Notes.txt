@@ -778,6 +778,14 @@ And second commit is for "if you want to cancel order, and also remove on cart",
 ########################################################################
 
 
+34 - Now we again manage my MASTER.html file.
+Because we want to remanage header section's buttons.
+
+
+
+########################################################################
+####### Commit : 4th ########################################################
+########################################################################
 
 
 
