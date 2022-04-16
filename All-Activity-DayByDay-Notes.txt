@@ -788,7 +788,14 @@ Because we want to remanage header section's buttons.
 ########################################################################
 
 
+35 - Now we set a flow of login and signin, so here create a urls, functions on views, and saperatly html files,
+and also do linking all of these. by the way now we only linking, not data savings.,and now commit. 
 
+
+
+########################################################################
+####### Commit : 5th ########################################################
+########################################################################
 
 
 

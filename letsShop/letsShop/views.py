@@ -173,6 +173,17 @@ def canceledThisOrder(request,addtocart):
     '''
 
 
+def usersSignIn(request): 
+    data={} 
+    return render(request,'userssignin.html',data); 
+ 
+
+def usersLogIn(request): 
+    data={} 
+    return render(request,'userslogin.html',data); 
+
+
+
 
 
 # One extra function, suppose we have data but we want to dual it
