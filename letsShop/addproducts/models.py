@@ -64,6 +64,8 @@ class SignIn(models.Model):
 	client_signin_date = models.DateTimeField(auto_now_add=True)
 	client_username =  models.CharField(max_length=35); 
 	client_password =  models.CharField(max_length=35); 
+	client_varificationby = models.CharField(max_length=35, null=True, blank=True); 
+	client_five_varification_codes = models.CharField(max_length=30, null=True, blank=True); 
 	def __str__(self):
 		return f"{self.client_name} is SignIn Now! as @{self.client_username}.";
 
@@ -79,7 +81,7 @@ class LogIn(models.Model):
 	# If login then 'True', and if logout then 'False' status is show
 	client_status =  models.CharField(max_length=10); 
 	def __str__(self):
-		return f"{self.client_name} is Active Now! as @{self.client_username}.";
+		return f"{self.client_name} is Active Now! as @{self.client_username}."; 
 
 
 

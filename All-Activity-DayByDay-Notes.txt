@@ -800,12 +800,14 @@ and also do linking all of these. by the way now we only linking, not data savin
 
 36 - Now we creating models for LogIn and SignIn, so its definate that we do two commits there,
 first is just before create model and second is after create model, so lets ready to commit.....
+I'm missing two fields to create in SignIn model, so we recreate it, and again commit it.....
 
 
 
 ########################################################################
 ####### Commit : 6th ########################################################
 ####### Commit : 7th ########################################################
+####### Commit : 8th ########################################################
 ########################################################################
 
 
