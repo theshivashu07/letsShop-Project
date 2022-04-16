@@ -149,10 +149,15 @@ def payments(request,productsslug):
     return redirect("/cart/"); 
 
 
+def removeCart(request,productsslug): 
+    cartedData=AddToCART.objects.get(product_slug=productsslug, is_payment_done="No"); 
+    cartedData.delete(); 
+    return redirect("/cart/"); 
 
 
 
 
+        
 
 
 

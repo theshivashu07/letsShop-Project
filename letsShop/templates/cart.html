@@ -19,7 +19,7 @@ Product Detail
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>Single Product Page</h2>
+                        <h2>Product CART Page</h2>
                         <!--
                         <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span>
                          -->
@@ -77,6 +77,8 @@ Product Detail
                                 <div class="main-border-button"><a href="#">Product on the way</a></div>
                                 {% else %}
                                 <div class="main-border-button" style="background-color: red"><a href="/payments/{{productData.product_slug}}">Payment Now</a></div>
+                                <div style="height: 10px;"></div>
+                                <div class="main-border-button" style="background-color: seagreen;"><a href="/removecart/{{productData.product_slug}}">Remove CART</a></div>
                                 {% endif %}
                             </div>
                         </ul>
