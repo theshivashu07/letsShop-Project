@@ -53,9 +53,39 @@ class Payment(models.Model):
 	def __str__(self):
 		return f"{self.product_slug}'s {self.product_quantity} product's payment is DONE!";
 
+# This is a SignIn model
+class SignIn(models.Model): 
+	os_name_holder = models.CharField(max_length=50); 
+	client_name = models.CharField(max_length=50); 
+	client_email = models.CharField(max_length=35); 
+	client_mno = models.CharField(max_length=15); 
+	client_address = models.CharField(max_length=100); 
+	client_areapincode = models.CharField(max_length=10); 
+	client_signin_date = models.DateTimeField(auto_now_add=True)
+	client_username =  models.CharField(max_length=35); 
+	client_password =  models.CharField(max_length=35); 
+	def __str__(self):
+		return f"{self.client_name} is SignIn Now! as @{self.client_username}.";
+
+# This is a LogIn model
+class LogIn(models.Model): 
+	os_name_holder = models.CharField(max_length=50); 
+	client_id = models.CharField(max_length=10); 
+	client_name = models.CharField(max_length=50); 
+	client_loginby = models.CharField(max_length=35); 
+	client_username =  models.CharField(max_length=35); 
+	client_password =  models.CharField(max_length=35); 
+	client_login_date = models.DateTimeField(auto_now=True);
+	# If login then 'True', and if logout then 'False' status is show
+	client_status =  models.CharField(max_length=10); 
+	def __str__(self):
+		return f"{self.client_name} is Active Now! as @{self.client_username}.";
+
 
 
 # Create your models here.
+
+
 
 
 
