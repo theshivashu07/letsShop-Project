@@ -226,15 +226,17 @@ def usersSignIn(request,passes):
 
         # here all password checkings
         elif(passes=="getusernamepassword"): 
-            # dont storevalues saperated with coma, otherwise data store in tuple format, like:(vashu,).
+            my_system = platform.uname()
+            allValues = SignIn.objects.filter(os_name_holder=my_system.node); 
+            values=allValues[len(allValues)-1]
+            # get all values from templates
             client_username=request.POST["username"];
             client_password=request.POST["password"];
             client_confirm_password=request.POST["confirmpassword"];
             if(client_password!=client_confirm_password):
+                values.client_username=client_username
+                values.save();
                 return redirect("/userssignin/ifpasswordnotmatch"); 
-            my_system = platform.uname()
-            allValues = SignIn.objects.filter(os_name_holder=my_system.node); 
-            values=allValues[len(allValues)-1]
             values.client_username=client_username
             values.client_password=client_password
             values.client_last_otp="NILL"
@@ -272,7 +274,7 @@ def usersSignIn(request,passes):
     # Its a bydefault section, if urls passing string is not matching then bydefault considering this...
     # a function to delete all data tables, where we not assign OTP and username and password
     # and this function runs only whenever we initially running this sign in option...
-    allValues = SignIn.objects.filter(client_username=""); 
+    allValues = SignIn.objects.filter(client_password=""); # search by password, not by username
     for i in allValues:
         i.delete()
     data={
