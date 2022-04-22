@@ -37,7 +37,6 @@ Contact
                     </div>
                     <form action="{% url 'userssignin' passes=passdata %}" method="post">
                         {% csrf_token %}
-                        <!-- <input type="hidden" name="fromwhere" value="{{hiddenkey}}" /> -->
 
                     {% if hiddenkey >= "0" %}
                         <div class="row">

@@ -838,12 +838,14 @@ But there is we do Four commits, for SignIn.....
 > First is simple SignIn's, there is we manage all the tasks by if else. and if OTP and Password is not matched then we moving another function. #AllInOnePage
 > Second is same like first, but there is our password is not match then username show same, as you entered last, nothing a big change, but its also a feature,
 and here is we consider password to delete all rows who is not valid, in SignIn default section, because we saved the password here even after it was wrong, thats why we fix this.
+> But third is needed because suppose if OTP and Password is not matched then we not moving another function, we solving this on existing function.
 
 
 
 ########################################################################
 ####### Commit : 1st  ########################################################
 ####### Commit : 2nd ########################################################
+####### Commit : 3rd ########################################################
 ########################################################################
 
 

@@ -184,6 +184,7 @@ def usersSignIn(request,passes):
     print(f"You are on '{passes}' url");
     if request.method=="POST":
 
+        # its a save all initial ingo's and generating OTP section...
         if(passes=="generateotp"):
             my_system = platform.uname()
             myOTP=myPassword()
@@ -208,14 +209,29 @@ def usersSignIn(request,passes):
             return render(request,'userssignin.html',data); 
 
         # here we check OTP is write or not, if write then moving it get username and password...
-        elif(passes=="otpchecking"): 
+        elif(passes=="otpchecking" or passes=="wrongotp"): 
             my_system = platform.uname()
-            getedOTP=request.POST["getedOTP"];
             allValues = SignIn.objects.filter(os_name_holder=my_system.node); 
             values=allValues[len(allValues)-1]
+            # this section is a normal flow, below check otp is correct or not!
+            # but want to use try and except because sometime its coming without 
+            getedOTP=request.POST["getedOTP"];
+            # try:
+            #     getedOTP=request.POST["getedOTP"];
+            # except:
+            #     getedOTP=None
             # this section is because if our OTP is wrong  
             if(values.client_last_otp!=getedOTP):
-                return redirect("/userssignin/wrongotp"); 
+                myOTP=myPassword()
+                print(f"Your New OTP is : <{myOTP}>")
+                values.client_last_otp=myOTP;
+                values.save();
+                data={
+                    'hiddenkey' : '1',
+                    'passdata':"otpchecking", 
+                    'signin' : values,
+                }
+                return render(request,'userssignin.html',data);
             # this section is because if our OTP is correct
             data={
                 'hiddenkey' : '2',
@@ -224,7 +240,7 @@ def usersSignIn(request,passes):
             }
             return render(request,'userssignin.html',data);
 
-        # here all password checkings
+        # here all password checkings, and username storings
         elif(passes=="getusernamepassword"): 
             my_system = platform.uname()
             allValues = SignIn.objects.filter(os_name_holder=my_system.node); 
@@ -233,43 +249,22 @@ def usersSignIn(request,passes):
             client_username=request.POST["username"];
             client_password=request.POST["password"];
             client_confirm_password=request.POST["confirmpassword"];
+            # check that is both passwords matched on not?
             if(client_password!=client_confirm_password):
                 values.client_username=client_username
                 values.save();
-                return redirect("/userssignin/ifpasswordnotmatch"); 
+                data={
+                    'hiddenkey' : '2',
+                    'passdata':"getusernamepassword",
+                    'signin' : values,
+                }
+                return render(request,'userssignin.html',data);
+            # if both passwords are match, then moving forword to final tasks
             values.client_username=client_username
             values.client_password=client_password
             values.client_last_otp="NILL"
             values.save()
             return redirect("/userslogin/"); 
-
-    # this section is because if our OTP is wrong 
-    if(passes=="wrongotp"):
-        my_system = platform.uname()
-        allValues = SignIn.objects.filter(os_name_holder=my_system.node); 
-        values=allValues[len(allValues)-1]
-        myOTP=myPassword()
-        print(f"Your New OTP is : <{myOTP}>")
-        values.client_last_otp=myOTP;
-        values.save();
-        data={
-            'hiddenkey' : '1',
-            'passdata':"otpchecking", 
-            'signin' : values,
-        }
-        return render(request,'userssignin.html',data);
-
-    # if we put a wrong mismatch passwords
-    if(passes=="ifpasswordnotmatch"): 
-        my_system = platform.uname()
-        allValues = SignIn.objects.filter(os_name_holder=my_system.node); 
-        values=allValues[len(allValues)-1]
-        data={
-            'hiddenkey' : '2',
-            'passdata':"getusernamepassword",
-            'signin' : values,
-        }
-        return render(request,'userssignin.html',data);
 
     # Its a bydefault section, if urls passing string is not matching then bydefault considering this...
     # a function to delete all data tables, where we not assign OTP and username and password
