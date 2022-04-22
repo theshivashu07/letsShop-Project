@@ -278,6 +278,7 @@ def usersSignIn(request,passes):
 #####################################################################################
 #####################################################################################
 
+
 def usersLogIn(request): 
     data={}; 
     if request.method=="POST":
@@ -292,6 +293,14 @@ def usersLogIn(request):
                 'message':"<i class='fa fa-repeat' aria-hidden='true' style='color:red'>  <b style='color:red'>Try Again</b></i>"
             }
             return render(request,'userslogin.html',data); 
+
+        # actually we filtering that if this OS trying to login, so its all previous accounts status is deactivate, means one OS able to do only one LogIn. 
+        my_system = platform.uname();
+        allValues = LogIn.objects.filter(os_name_holder=my_system.node,client_status=True); 
+        for data in allValues:
+            data.client_status=False;
+            data.save()
+            
         # we continue to add data on LogIn model, if Username and Password matching
         my_system = platform.uname()
         values = LogIn(
@@ -306,6 +315,7 @@ def usersLogIn(request):
         values.save();
         return redirect("/"); 
     return render(request,'userslogin.html',data); 
+
 
 #####################################################################################
 #####################################################################################

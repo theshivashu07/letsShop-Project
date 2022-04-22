@@ -858,10 +858,17 @@ And also implemented a very cute sa logic, for if our username and password not 
 And if username and password matched then we redirect on home page now, we implementing many logics after few commits.
 And we also adding this data to a LogIn model. So thats all about this commit.....
 
+Here's must want second commit for LogIn, Actually its difficult to find that who is active and who not? for this we use another logic in future...
+now we manage this according to system, because if anyone OS login to another account then its all old account's are closed.
+but this thing is not manage the cases, like if we login and then going forever and never come back to login with this system, so this account always as active account,
+We manage this according to this account's activity or dates, like if any account not do any activity during last 1 days, so its automatically dissabled, but its a future's way.
+Now we going to commit with our this existing code, so lets commit this code.
+
 
 
 ########################################################################
 ####### Commit : 5th ########################################################
+####### Commit : 6th ########################################################
 ########################################################################
 
 
