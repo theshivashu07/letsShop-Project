@@ -853,6 +853,16 @@ and all these things handeled by only one page saperatly, so thats the our forth
 ########################################################################
 
 
+38 - Here is we working on LogIn feature, Not use session, but just implementing all logics to find username and password,
+And also implemented a very cute sa logic, for if our username and password not available, so there show msg on red color.
+And if username and password matched then we redirect on home page now, we implementing many logics after few commits.
+And we also adding this data to a LogIn model. So thats all about this commit.....
+
+
+
+########################################################################
+####### Commit : 5th ########################################################
+########################################################################
 
 
 

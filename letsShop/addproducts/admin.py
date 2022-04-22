@@ -22,7 +22,7 @@ class saveSignIn(admin.ModelAdmin):
 admin.site.register(SignIn,saveSignIn);
 
 class saveLogIn(admin.ModelAdmin):
-	list_display=('os_name_holder', 'client_name', 'client_loginby', 'client_username', 'client_login_date');
+	list_display=('os_name_holder', 'client_name', 'client_loginby', 'client_username', 'client_login_date', 'client_status');
 admin.site.register(LogIn,saveLogIn);
 
 

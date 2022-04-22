@@ -216,10 +216,6 @@ def usersSignIn(request,passes):
             # this section is a normal flow, below check otp is correct or not!
             # but want to use try and except because sometime its coming without 
             getedOTP=request.POST["getedOTP"];
-            # try:
-            #     getedOTP=request.POST["getedOTP"];
-            # except:
-            #     getedOTP=None
             # this section is because if our OTP is wrong  
             if(values.client_last_otp!=getedOTP):
                 myOTP=myPassword()
@@ -284,6 +280,31 @@ def usersSignIn(request,passes):
 
 def usersLogIn(request): 
     data={}; 
+    if request.method=="POST":
+        # get all values from templates
+        client_username=request.POST["username"];
+        client_password=request.POST["password"];
+        # here is we check that is our username and password is in database with each others or not?
+        try:
+            geteddata = SignIn.objects.get(client_username=client_username,client_password=client_password); 
+        except:
+            data={
+                'message':"<i class='fa fa-repeat' aria-hidden='true' style='color:red'>  <b style='color:red'>Try Again</b></i>"
+            }
+            return render(request,'userslogin.html',data); 
+        # we continue to add data on LogIn model, if Username and Password matching
+        my_system = platform.uname()
+        values = LogIn(
+            os_name_holder=my_system.node, 
+            client_id=geteddata.id,
+            client_name=geteddata.client_name,
+            client_loginby=geteddata.client_email,
+            client_username=geteddata.client_username,
+            client_password=geteddata.client_password,
+            client_status=True,
+        ) 
+        values.save();
+        return redirect("/"); 
     return render(request,'userslogin.html',data); 
 
 #####################################################################################
