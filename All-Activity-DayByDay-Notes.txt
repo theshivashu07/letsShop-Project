@@ -839,6 +839,9 @@ But there is we do Four commits, for SignIn.....
 > Second is same like first, but there is our password is not match then username show same, as you entered last, nothing a big change, but its also a feature,
 and here is we consider password to delete all rows who is not valid, in SignIn default section, because we saved the password here even after it was wrong, thats why we fix this.
 > But third is needed because suppose if OTP and Password is not matched then we not moving another function, we solving this on existing function.
+> And forth is not function's code change, actually now we do code change on our "usersignin.html" file, because we don't want to show our file like that,
+we want page, like if our home page's work done then only OTP section will show, if OTP done then only username and password section will show,
+and all these things handeled by only one page saperatly, so thats the our forth commit. And yess now its really working perfectly.
 
 
 
@@ -846,6 +849,7 @@ and here is we consider password to delete all rows who is not valid, in SignIn 
 ####### Commit : 1st  ########################################################
 ####### Commit : 2nd ########################################################
 ####### Commit : 3rd ########################################################
+####### Commit : 4th ########################################################
 ########################################################################
 
 
