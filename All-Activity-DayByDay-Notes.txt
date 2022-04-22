@@ -814,6 +814,39 @@ I'm missing two fields to create in SignIn model, so we recreate it, and again c
 
 
 
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 22-04-2022 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
+
+
+37 - Here we are so confused to create a SignIn feature, because here is we make all things in one page,
+means SignIn Home, the OTP Checking and also on there is asks username and password. and for else conditions management.
+But always remember that, dont store values saperated by coma, otherwise data store in tuple format, like:(vashu,). 
+And in bydefault section we filter all rows where username not assign, and we delete all these rows, because these are defaulter's...
+
+But there is we do Four commits, for SignIn.....
+> First is simple SignIn's, there is we manage all the tasks by if else. and if OTP and Password is not matched then we moving another function. #AllInOnePage
+
+
+
+########################################################################
+####### Commit : 1st  ########################################################
+########################################################################
+
+
+
+
+
 
 
 

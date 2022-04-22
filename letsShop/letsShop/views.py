@@ -158,7 +158,7 @@ def removeCart(request,productsslug):
 def canceledThisOrder(request,addtocart): 
     # below code is if you want to cancel order, and also remove on cart...
     cartedData=AddToCART.objects.get(id=addtocart); 
-    paymentData=Payment.objects.get(addtocart_id=addtocart);
+    paymentData=Payment.objects.get(addtocart_id=addtocart); 
     cartedData.delete(); 
     paymentData.delete(); 
     return redirect("/cart/"); 
@@ -173,14 +173,133 @@ def canceledThisOrder(request,addtocart):
     '''
 
 
-def usersSignIn(request): 
-    data={} 
+
+
+
+
+#####################################################################################
+#####################################################################################
+
+def usersSignIn(request,passes): 
+    print(f"You are on '{passes}' url");
+    if request.method=="POST":
+
+        if(passes=="generateotp"):
+            my_system = platform.uname()
+            myOTP=myPassword()
+            print(f"Your OTP is : <{myOTP}>")
+            values = SignIn( 
+                os_name_holder=my_system.node, 
+                client_name=request.POST["name"],
+                client_email=request.POST["email"],
+                client_mno=request.POST["mno"],
+                client_address=request.POST["address"],
+                client_areapincode=request.POST["areapincode"],
+                client_varificationby=request.POST["varifyby"],
+                client_five_varification_codes=None,
+                client_last_otp=myOTP,
+            ) 
+            values.save();
+            data={
+                'hiddenkey' : '1',
+                'passdata':"otpchecking",
+                'signin' : values,
+            }
+            return render(request,'userssignin.html',data); 
+
+        # here we check OTP is write or not, if write then moving it get username and password...
+        elif(passes=="otpchecking"): 
+            my_system = platform.uname()
+            getedOTP=request.POST["getedOTP"];
+            allValues = SignIn.objects.filter(os_name_holder=my_system.node); 
+            values=allValues[len(allValues)-1]
+            # this section is because if our OTP is wrong  
+            if(values.client_last_otp!=getedOTP):
+                return redirect("/userssignin/wrongotp"); 
+            # this section is because if our OTP is correct
+            data={
+                'hiddenkey' : '2',
+                'passdata':"getusernamepassword",
+                'signin' : values,
+            }
+            return render(request,'userssignin.html',data);
+
+        # here all password checkings
+        elif(passes=="getusernamepassword"): 
+            # dont storevalues saperated with coma, otherwise data store in tuple format, like:(vashu,).
+            client_username=request.POST["username"];
+            client_password=request.POST["password"];
+            client_confirm_password=request.POST["confirmpassword"];
+            if(client_password!=client_confirm_password):
+                return redirect("/userssignin/ifpasswordnotmatch"); 
+            my_system = platform.uname()
+            allValues = SignIn.objects.filter(os_name_holder=my_system.node); 
+            values=allValues[len(allValues)-1]
+            values.client_username=client_username
+            values.client_password=client_password
+            values.client_last_otp="NILL"
+            values.save()
+            return redirect("/userslogin/"); 
+
+    # this section is because if our OTP is wrong 
+    if(passes=="wrongotp"):
+        my_system = platform.uname()
+        allValues = SignIn.objects.filter(os_name_holder=my_system.node); 
+        values=allValues[len(allValues)-1]
+        myOTP=myPassword()
+        print(f"Your New OTP is : <{myOTP}>")
+        values.client_last_otp=myOTP;
+        values.save();
+        data={
+            'hiddenkey' : '1',
+            'passdata':"otpchecking", 
+            'signin' : values,
+        }
+        return render(request,'userssignin.html',data);
+
+    # if we put a wrong mismatch passwords
+    if(passes=="ifpasswordnotmatch"): 
+        my_system = platform.uname()
+        allValues = SignIn.objects.filter(os_name_holder=my_system.node); 
+        values=allValues[len(allValues)-1]
+        data={
+            'hiddenkey' : '2',
+            'passdata':"getusernamepassword",
+            'signin' : values,
+        }
+        return render(request,'userssignin.html',data);
+
+    # Its a bydefault section, if urls passing string is not matching then bydefault considering this...
+    # a function to delete all data tables, where we not assign OTP and username and password
+    # and this function runs only whenever we initially running this sign in option...
+    allValues = SignIn.objects.filter(client_username=""); 
+    for i in allValues:
+        i.delete()
+    data={
+        'hiddenkey':'0',
+        'passdata':"generateotp",
+    }
     return render(request,'userssignin.html',data); 
- 
+
+
+#####################################################################################
+#####################################################################################
 
 def usersLogIn(request): 
-    data={} 
+    data={}; 
     return render(request,'userslogin.html',data); 
+
+#####################################################################################
+#####################################################################################
+
+
+
+
+
+
+
+
+
 
 
 
@@ -196,6 +315,37 @@ def getdataJustDual(bases):
     for data in myData:
         gettingData.append(data)
     return gettingData;
+
+
+
+def myPassword():
+        # Refrence link : https://www.geeksforgeeks.org/generating-strong-password-using-python/
+        import random
+        import array
+        MAX_LEN = 12
+        DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] 
+        LOCASE_CHARACTERS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+                             'i', 'j', 'k', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        UPCASE_CHARACTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+                             'I', 'J', 'K', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+        SYMBOLS = ['@', '#', '$', '%', '=', ':', '?', '.', '/', '|', '~', '>', '*', '(', ')', '<']
+        # combines all the character arrays above to form one array
+        COMBINED_LIST = DIGITS + UPCASE_CHARACTERS + LOCASE_CHARACTERS + SYMBOLS
+        # randomly select at least one character from each character set above
+        rand_digit = random.choice(DIGITS)
+        rand_upper = random.choice(UPCASE_CHARACTERS)
+        rand_lower = random.choice(LOCASE_CHARACTERS)
+        rand_symbol = random.choice(SYMBOLS)
+        temp_pass = rand_digit + rand_upper + rand_lower + rand_symbol
+        for x in range(MAX_LEN - 4):
+            temp_pass = temp_pass + random.choice(COMBINED_LIST)
+        temp_pass_list = array.array('u', temp_pass)
+        random.shuffle(temp_pass_list)
+
+        password = ""
+        for x in temp_pass_list:
+                password = password + x;
+        return password;
 
 
 

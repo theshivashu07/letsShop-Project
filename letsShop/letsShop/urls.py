@@ -50,8 +50,8 @@ urlpatterns = [
     # actually here wa want to take cart id, so that according to this we remove this product order
     path('canceledthisorder/<int:addtocart>',views.canceledThisOrder,name="canceledthisorder"),
 
-    path('userssignin/',views.usersSignIn,name="userssignin"),
-    path('userslogin/',views.usersLogIn,name="userslogin"),
+    path('userssignin/<str:passes>',views.usersSignIn,name="userssignin"), 
+    path('userslogin/',views.usersLogIn,name="userslogin"), 
 ] 
 
 
